@@ -12,7 +12,8 @@ from scipy.integrate import odeint
 # import laba7 as laba
 # import laba8 as laba
 # import laba9 as laba
-import laba10 as laba
+#import laba10 as laba
+import laba11 as laba
 
 
 step = (laba.e-laba.s)/laba.iters
