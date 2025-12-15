@@ -2,19 +2,11 @@
 import half_division_method
 import matplotlib.pyplot as plt
 from scipy.integrate import odeint
+import sys
+import importlib
 
-# import laba1 as laba
-# import laba2 as laba
-# import laba3 as laba
-# import laba4 as laba
-# import laba5 as laba
-# import laba6 as laba
-# import laba7 as laba
-# import laba8 as laba
-# import laba9 as laba
-#import laba10 as laba
-import laba11 as laba
-
+module_name=f"laba{sys.argv[1]}"
+laba=importlib.import_module(module_name)
 
 step = (laba.e-laba.s)/laba.iters
 
@@ -55,7 +47,7 @@ if hasattr(laba, "fdyx"):
     plt.plot(all_x, approximated_y, label="runge kutte")
 
 
-if hasattr(laba, "f_first_der"):
+if hasattr(laba, "fdyx"):
     approximated_y = []
 
     h = step
@@ -69,7 +61,7 @@ if hasattr(laba, "f_first_der"):
         approximated_y += [cur_y]
 
         new_y = half_division_method.solve(
-            cur_y-delta, cur_y+delta, 1e-2, lambda y: laba.f_first_der(cur_y, cur_x, lambda: (y-cur_y)/h))
+            cur_y-delta, cur_y+delta, 1e-2, lambda y: (y-cur_y)/h-laba.fdyx(cur_y, cur_x))
 
         diff = new_y-cur_y
         if abs(diff) < 0.01:

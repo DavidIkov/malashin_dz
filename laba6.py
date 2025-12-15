@@ -15,10 +15,6 @@ def fdyx(y, x):
     return (-b-math.sqrt(b*b-4*a*c))/2/a
 
 
-def f_first_der(y, x, yd):
-    return yd()-fdyx(y, x)
-
-
 s = -math.exp(1)/2
 e = math.pi/4
 iters = 50

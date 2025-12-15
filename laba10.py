@@ -13,10 +13,6 @@ def fdyx(y, x):
     return -(3/10)*math.sin(x)-(3*x/10+17/50)*math.cos(x)+(1/10)*math.cos(x)-(x/10-3/25)*math.sin(x)+2*const*math.exp(2*x)+const1*math.exp(x)
 
 
-def f_first_der(y, x, yd):
-    return yd()-fdyx(y, x)
-
-
 def get_pqf():
     return lambda x: -3, lambda x: 2, lambda x: x*math.cos(x)
 

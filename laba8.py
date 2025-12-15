@@ -13,9 +13,6 @@ def fdyx(y, x):
     return const*math.exp(x)+(-2)*const1/math.exp(2*x)
 
 
-def f_first_der(y, x, yd):
-    return yd()-fdyx(y, x)
-
 def get_pqf():
     return lambda x: 1, lambda x: -2, lambda x: 0
 
