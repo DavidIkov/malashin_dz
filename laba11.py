@@ -6,11 +6,11 @@ const2 = -2
 
 
 def f(x):
-    return x*math.exp(x)*math.log(x)+(const1*x+const2)*math.exp(x)
+    return math.exp(x)*(x*math.log(x)+(const1+const2*x))
 
 
 def fdyx(y, x):
-    return (x+1)*math.exp(x)*math.log(x)+(const1*x+const1+const2+1)*math.exp(x)
+    return math.exp(x)*(const1+const2+x*const2+x*math.log(x)+1+math.log(x))
 
 
 def get_pqf():
@@ -19,4 +19,4 @@ def get_pqf():
 
 s = math.pi - math.exp(1)
 e = math.pi/2
-iters = 200
+iters = 100

@@ -5,8 +5,8 @@ from scipy.integrate import odeint
 import sys
 import importlib
 
-module_name=f"laba{sys.argv[1]}"
-laba=importlib.import_module(module_name)
+module_name = f"laba{sys.argv[1]}"
+laba = importlib.import_module(module_name)
 
 step = (laba.e-laba.s)/laba.iters
 
@@ -47,7 +47,7 @@ if hasattr(laba, "fdyx"):
     plt.plot(all_x, approximated_y, label="runge kutte")
 
 
-if hasattr(laba, "fdyx"):
+if hasattr(laba, "original_fd"):
     approximated_y = []
 
     h = step
@@ -55,18 +55,18 @@ if hasattr(laba, "fdyx"):
     cur_x = laba.s
     cur_y = laba.f(cur_x)
 
-    delta = 1
+    delta = 0.1
 
     for i in range(laba.iters):
         approximated_y += [cur_y]
 
         new_y = half_division_method.solve(
-            cur_y-delta, cur_y+delta, 1e-2, lambda y: (y-cur_y)/h-laba.fdyx(cur_y, cur_x))
+            cur_y-delta, cur_y+delta, 1e-2, lambda y: laba.original_fd(cur_y, cur_x, lambda: (y-cur_y)/h))
 
-        diff = new_y-cur_y
-        if abs(diff) < 0.01:
-            diff = 0.01
-        delta = diff/h
+        #diff = new_y-cur_y
+        #if abs(diff) < 0.01:
+        #    diff = 0.01
+        #delta = diff/h
 
         cur_y = new_y
         cur_x += h

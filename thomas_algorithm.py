@@ -2,11 +2,10 @@ import numpy as np
 
 def solve(A, B, C, D):
     """
-    Решение трехдиагональной системы методом прогонки
+    tridiagonal system
     """
     n = len(D)
     
-    # Прямой ход - вычисление прогоночных коэффициентов
     alpha = np.zeros(n)
     beta = np.zeros(n)
     
@@ -18,7 +17,6 @@ def solve(A, B, C, D):
         alpha[i] = -C[i] / denominator
         beta[i] = (D[i] - A[i] * beta[i-1]) / denominator
     
-    # Обратный ход
     y = np.zeros(n)
     y[n-1] = beta[n-1]
     
