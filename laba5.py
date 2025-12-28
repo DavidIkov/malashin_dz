@@ -1,11 +1,11 @@
 # 187
 import math
 
-const = 1
+const = -1
 
 
 def f(x):
-    return math.sqrt((3*x*x*x+math.sqrt(9*x**6-4*(x*x-const)))/2)
+    return math.sqrt((3*x*x*x+math.sqrt(9*x**6-4*(x*x+const)))/2)
 
 
 def fdyx(y, x):
