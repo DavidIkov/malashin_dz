@@ -6,7 +6,7 @@ def solve(a, b, accuracy, f):
         elif f(b)*f(c) < 0:
             a = c
         else:
-            print(f"failed half division method with borders: [%{a}, %{b}]")
+            print(f"failed half division method with borders: [{a}, {b}]")
             exit(1)
         c = (a + b) / 2
     return c

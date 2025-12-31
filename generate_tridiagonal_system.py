@@ -28,4 +28,4 @@ def gen(n, a, b, p, q, f, alpha, beta):
         C[i] = 1/h**2 + p(x[i])/(2*h)
         D[i] = f(x[i])
 
-    return A, B, C, D, x
+    return A, B, C, D
